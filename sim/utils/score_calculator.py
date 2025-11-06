@@ -233,7 +233,7 @@ class ScoreCalculator:
                         cnt += 1
             drivable_ratio = cnt / (m*n)
             if drivable_ratio < 0.3:
-                return 0
+                return 0.0
             elif drivable_ratio < 0.5:
                 dac = 0.5
         return dac
@@ -258,7 +258,7 @@ class ScoreCalculator:
                     cnt += 1
         drivable_ratio = cnt / (m*n)
         if drivable_ratio < 0.3:
-            return 0
+            return 0.0
         elif drivable_ratio < 0.5:
             dac = 0.5
         return dac
@@ -315,7 +315,7 @@ class ScoreCalculator:
         checks = [
             np.all(np.abs(kinematics['lat_accel']) <=
                    boundaries['max_abs_lat_accel']),
-            np.all(kinematics['lon_accel'] <= boundaries['max_abs_lat_accel']),
+            np.all(kinematics['lon_accel'] <= boundaries['max_lon_accel']),
             np.all(kinematics['lon_accel'] >= boundaries['min_lon_accel']),
             np.all(np.abs(kinematics['lon_jerk']) <=
                    boundaries['max_abs_lon_jerk']),
