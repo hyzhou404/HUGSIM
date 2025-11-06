@@ -79,7 +79,7 @@ We've made some changes in the capturing and reloading code. If you would like t
 
 # Vehicles, Scenes and Scenarios
 
-We have released all the 3DRealCar files, 49 scenes and corresponding 345 scenarios available at the [release link](https://huggingface.co/datasets/XDimLab/HUGSIM). 
+We have released all 3DRealCar files, along with the complete set of scenes and scenarios, at [release link](https://huggingface.co/datasets/XDimLab/HUGSIM). 
 We are also holding a competition at [RealADSim @ ICCV 2025](https://huggingface.co/spaces/XDimLab/ICCV2025-RealADSim-ClosedLoop), so some scenarios and scenarios are hosted privately. We welcome participants to join!
 
 # Scenarios configuration with GUI

@@ -435,10 +435,11 @@ document.getElementById("saveConfigBtn").addEventListener("click", async () => {
             const car_appearance = car_appearance_array[i-1];
             // let y = await getHeight(x , z);
             // y = y.y + 1.4;
+            let carYaw_save = -carYaw - Math.PI/2;
             yamlContent.push(`- - ${x.toFixed(2)}`);
-            yamlContent.push(`  - ${-z.toFixed(2)}`); 
+            yamlContent.push(`  - ${z.toFixed(2)}`); 
             yamlContent.push(`  - ${y.toFixed(2)}`);
-            yamlContent.push(`  - ${carYaw}`);
+            yamlContent.push(`  - ${carYaw_save}`);
             yamlContent.push(`  - ${car_speed}`);
             yamlContent.push(`  - "${car_appearance}"`);
             yamlContent.push(`  - ${carType}Planner`);

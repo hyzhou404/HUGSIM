@@ -381,7 +381,7 @@ class GaussianModel:
         }
         semantic_idx = torch.argmax(self.get_full_3D_features, dim=-1, keepdim=True)
         opacities = self.get_full_opacity[:, 0]
-        mask = ((semantic_idx != 10)[:, 0]) & ((semantic_idx != 8)[:, 0]) & (opacities > 0.2)
+        mask = ((semantic_idx != 10)[:, 0]) & ((semantic_idx != 11)[:, 0]) & (opacities > 0.2)
 
         semantic_idx = semantic_idx[mask]
         semantic_rgb = torch.zeros_like(semantic_idx).repeat(1, 3)

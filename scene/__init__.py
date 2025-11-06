@@ -68,11 +68,13 @@ class Scene:
         self.cameras_extent = scene_info.nerf_normalization["radius"]
 
         if self.loaded_iter:
-            (model_params, first_iter) = torch.load(os.path.join(self.model_path, "ckpts", f"chkpnt{self.loaded_iter}.pth"))
+            # (model_params, first_iter) = torch.load(os.path.join(self.model_path, "ckpts", f"chkpnt{self.loaded_iter}.pth"))
+            (model_params, first_iter) = torch.load(os.path.join(self.model_path, f"scene.pth"))
             gaussians.restore(model_params, None)
             for iid, dynamic_gaussian in self.dynamic_gaussians.items():
                 if planning is None or iid not in planning:
-                    (model_params, first_iter) = torch.load(os.path.join(self.model_path, "ckpts", f"dynamic_{iid}_chkpnt{self.loaded_iter}.pth"))
+                    # (model_params, first_iter) = torch.load(os.path.join(self.model_path, "ckpts", f"dynamic_{iid}_chkpnt{self.loaded_iter}.pth"))
+                    (model_params, first_iter) = torch.load(os.path.join(self.model_path, f"dynamic_{iid}.pth"))
                     dynamic_gaussian.restore(model_params, None)
                 else:
                     (model_params, first_iter) = torch.load(planning[iid])

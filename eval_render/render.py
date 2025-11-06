@@ -96,7 +96,7 @@ def render_set(name:str, scene:Scene, background:torch.Tensor):
             prev_view = views[idx-gap]
             
         render_pkg = render(
-            view, prev_view, scene.gaussians, scene.dynamic_gaussians, scene.unicycles, background, True
+            view, prev_view, scene.gaussians, scene.dynamic_gaussians, None, background, True
         )
         rendering = render_pkg['render'].detach().cpu()
         semantic = render_pkg['feats'].detach().cpu()
@@ -121,6 +121,7 @@ def render_set(name:str, scene:Scene, background:torch.Tensor):
 
 def render_sets(args):
     cfg = OmegaConf.load(os.path.join(args.model_path, 'cfg.yaml'))
+    cfg.model_path = args.model_path
     with torch.no_grad():
         gaussians = GaussianModel(cfg.model.sh_degree, affine=cfg.affine)
         scene = Scene(cfg, gaussians, load_iteration=args.iteration, shuffle=False, data_type=cfg.data_type)
