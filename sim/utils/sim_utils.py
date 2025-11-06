@@ -59,10 +59,11 @@ def traj2control(plan_traj, info):
     plan_traj_stats[1:, :2] = plan_traj[:, [1,0]]
     prev_a, prev_b = 0, 0
     for i, (a, b) in enumerate(plan_traj):
-        rot = np.arctan((b - prev_b)/(a - prev_a))
+        rot = np.arctan2(b - prev_b, np.abs(a - prev_a)) * np.sign(a - prev_a)
         plan_traj_stats[i+1, 2] = rot
+        prev_a, prev_b = a, b
     curr_stat = np.array(
-        [0, 0, 0, info['ego_velo'], info['ego_steer']]
+        [0.0, 0.0, 0.0, info['ego_velo'], info['ego_steer']]
     )
     acc, steer_rate = plan2control(plan_traj_stats, curr_stat)
     return acc, steer_rate
