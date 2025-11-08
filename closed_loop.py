@@ -82,7 +82,7 @@ def create_gym_env(cfg, output):
             'obj_names': ['car' for _ in info['obj_boxes']],
             'planned_traj': {
                 'traj': global_traj,
-                'timestep': 0.25
+                'timestep': 0.5
             },
             'collision': info['collision'],
             'rc': info['rc']
