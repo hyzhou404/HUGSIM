@@ -58,7 +58,7 @@ def traj2control(plan_traj, info):
     plan_traj_stats = np.zeros((plan_traj.shape[0]+1, 5))
     plan_traj_stats[1:, :2] = plan_traj[:, [1,0]]
     prev_a, prev_b = 0.0, 0.0
-    for i, (a, b) in enumerate(plan_traj):
+    for i, (b, a) in enumerate(plan_traj):
         rot = np.arctan2(b - prev_b, a - prev_a)
         rot = np.where(rot > np.pi/2, rot - np.pi, rot)
         rot = np.where(rot < -np.pi/2, rot + np.pi, rot)
