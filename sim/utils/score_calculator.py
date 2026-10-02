@@ -14,8 +14,10 @@ import open3d as o3d
 import torch
 from scipy.spatial.transform import Rotation as SCR
 
-ego_verts_canonic = np.array([[0.5, 0.5, 0], [0.5, -0.5, 0], [0.5, 0.5, 1.0], [0.5, -0.5, 1.0],
-                    [-0.5, -0.5, 0], [-0.5, 0.5, 0], [-0.5, -0.5, 1.0], [-0.5, 0.5, 1.0]])
+# ego_box's z is the camera plane (HUGSimEnv.vt[1], one camera height above the road), so the
+# box extends from there down to the road, over the heights HUGSimEnv's own collision check covers.
+ego_verts_canonic = np.array([[0.5, 0.5, -1.0], [0.5, -0.5, -1.0], [0.5, 0.5, 0], [0.5, -0.5, 0],
+                    [-0.5, -0.5, -1.0], [-0.5, 0.5, -1.0], [-0.5, -0.5, 0], [-0.5, 0.5, 0]])
 
 # Define boundaries
 boundaries = {
